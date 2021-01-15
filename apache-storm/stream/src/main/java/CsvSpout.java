@@ -57,9 +57,6 @@ class CsvSpout extends BaseRichSpout {
             this.csvReader = new CSVReader(fileReader);
             // read csv header to get fields info
             String[] fields = this.csvReader.readNext();
-            System.out.println("DECLARING OUTPUT FIELDS");
-            for (String field : fields)
-                System.out.println(field);
             outputFieldsDeclarer.declare(new Fields(Arrays.asList(fields)));
         } catch (Exception e) {
             e.printStackTrace();

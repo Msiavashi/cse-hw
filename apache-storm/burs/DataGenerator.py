@@ -19,7 +19,7 @@ class DataGenerator:
 
     def start(self):
         records = []
-        records.append("random_time, exchange_code, trade_method, random_symbol, trade_price, random_stocks")
+        records.append("time,code,trade_method,symbol,price,shares")
         while self.timer.next_minute():
             for exchange_code in range(self.num_exchange_codes):
                 random_symbol = random.randint(1, self.num_symbols)
@@ -27,7 +27,7 @@ class DataGenerator:
                 random_time = self.timer.get_random_seconds()
                 trade_method = random.randint(0, 1)    # 0: sell, 1: buy
                 random_stocks = random.randint(1, self.max_stock)
-                records.append("{0}, {1}, {2}, {3}, {4}, {5}".format(
+                records.append("{0},{1},{2},{3},{4},{5}".format(
                     random_time, exchange_code, trade_method, random_symbol, trade_price, random_stocks))
         self.write_csv(records)
 
